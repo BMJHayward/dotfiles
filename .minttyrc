@@ -1,0 +1,17 @@
+CursorType=block
+CursorBlinks=no
+FontHeight=14
+Font=Consolas
+Term=xterm-256color
+BellType=0
+ConfirmExit=no
+ClicksPlaceCursor=yes
+Printer=CutePDF Writer
+PgUpDnScroll=yes
+FontSmoothing=full
+Locale=en_AU
+Charset=UTF-8
+Transparency=off
+Columns=100
+Rows=48
+OpaqueWhenFocused=yes
