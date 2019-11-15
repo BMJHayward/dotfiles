@@ -1,27 +1,53 @@
+[merge]
+	tool = meld
+[diff]
+	guitool = meld
+[core]
+	editor = \"C:/Program Files (x86)/Sublime Text 3/sublime_text.exe\"
+	autocrlf = true
+[mergetool "meld"]
+	path = D:/programs/Meld/Meld.exe
+	cmd = \"D:/programs/Meld/Meld.exe\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output \"$MERGED\"
+[difftool "meld"]
+	path = D:/programs/Meld/Meld.exe
+	cmd = \"D:/programs/Meld/Meld.exe\" \"$LOCAL\" \"$REMOTE\"
+[i18n]
+	filesEncoding = utf-8
 [user]
-	name = firstname lastname
-	email = email@address.com
+	name = Brendan Hayward
+	email = email
+[pull]
+	rebase = true
+[fetch]
+	prune = false
+[rebase]
+	autoStash = true
+[winUpdater]
+	recentlySeenVersion = 2.24.0.windows.2
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-	l1 = log --pretty=format:%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]--decorate --date=short
+	lg3 = log --pretty=format:%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]--decorate --date=short
 [credential]
 	helper = wincred
-[merge]
-	tool = kdiff3
-[diff]
-	guitool = kdiff3
-[core]
-	editor = \"full/path/to/editor\" editorcommand
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
-[mergetool "kdiff3"]
-	path = C:/Program Files/KDiff3/kdiff3.exe
-[difftool "kdiff3"]
-	path = C:/Program Files/KDiff3/kdiff3.exe
-[http]
-	proxy = 147.200.33.212:3128
+[color]
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan

@@ -1,25 +1,33 @@
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+# Aliases
+alias ls='ls -h --color=auto'
+alias ll='ls -alhX'
+alias la='ls -A'
+alias l='ls -CF'
+alias ..='cd ..'
+alias cd..='cd ..'
+alias ...='cd ../..'
+alias cim='vim'
+alias back='cd $OLDPWD'
+alias grep='grep --color=auto'
+alias dfh='df -h'
 
+# Prompt
+BGREEN='\[\033[1;32m\]'
+GREEN='\[\033[0;32m\]'
+BRED='\[\033[1;31m\]'
+RED='\[\033[0;31m\]'
+BBLUE='\[\033[1;34m\]'
+BLUE='\[\033[0;34m\]'
+NORMAL='\[\033[00m\]'
 
-#-------------------------------------------------------------
-# Source global definitions (if any)
-#-------------------------------------------------------------
-
-
-if [ -f /etc/bashrc ]; then
-      . /etc/bashrc   # --> Read /etc/bashrc, if present.
-fi
-
-
-#--------------------------------------------------------------
-#  Automatic setting of $DISPLAY (if not set already).
-#  This works for me - your mileage may vary. . . .
-#  The problem is that different types of terminals give
-#+ different answers to 'who am i' (rxvt in particular can be
-#+ troublesome) - however this code seems to work in a majority
-#+ of cases.
-#--------------------------------------------------------------
+psgrep() {
+	if [ ! -z $1 ] ; then
+		echo "Grepping for processes matching $1..."
+		ps aux | grep $1 | grep -v grep
+	else
+		echo "!! Need name to grep for"
+	fi
+}
 
 function get_xserver ()
 {
@@ -126,41 +134,6 @@ NC="\e[m"               # Color Reset
 
 ALERT=${BWhite}${On_Red} # Bold White on red background
 
-#-------------------------------------------------------------
-# Shell Prompt - for many examples, see:
-#       http://www.debian-administration.org/articles/205
-#       http://www.askapache.com/linux/bash-power-prompt.html
-#       http://tldp.org/HOWTO/Bash-Prompt-HOWTO
-#       https://github.com/nojhan/liquidprompt
-#-------------------------------------------------------------
-# Current Format: [TIME USER@HOST PWD] >
-# TIME:
-#    Green     == machine load is low
-#    Orange    == machine load is medium
-#    Red       == machine load is high
-#    ALERT     == machine load is very high
-# USER:
-#    Cyan      == normal user
-#    Orange    == SU to user
-#    Red       == root
-# HOST:
-#    Cyan      == local session
-#    Green     == secured remote connection (via ssh)
-#    Red       == unsecured remote connection
-# PWD:
-#    Green     == more than 10% free disk space
-#    Orange    == less than 10% free disk space
-#    ALERT     == less than 5% free disk space
-#    Red       == current user does not have write privileges
-#    Cyan      == current filesystem is size zero (like /proc)
-# >:
-#    White     == no background or suspended jobs in this shell
-#    Cyan      == at least one background job in this shell
-#    Orange    == at least one suspended job in this shell
-#
-#    Command is added to the history file each time you hit enter,
-#    so it's available to all shells (using 'history -a').
-
 
 # Test connection type:
 if [ -n "${SSH_CONNECTION}" ]; then
@@ -179,8 +152,6 @@ elif [[ ${USER} != $(logname) ]]; then
 else
     SU=${BCyan}         # User is normal (well ... most of us are).
 fi
-
-
 
 NCPU=$(grep -c 'processor' /proc/cpuinfo)    # Number of CPUs
 SLOAD=$(( 100*${NCPU} ))        # Small load
@@ -308,10 +279,11 @@ alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
 alias du='du -kh'    # Makes a more readable output.
 alias df='df -kTh'
+alias sampler='sampler-1.0.3-windows-amd64.exe'
 #-----------------
 # Code checking
 # ----------------
-#alias check_pylint = rm -f PYLINT.py && pylint <filename> > PYLINT.py && vim PYLINT.py
+alias check_pylint = rm -f PYLINT.py && pylint <filename> > PYLINT.py && vim PYLINT.py
 
 #-------------------------------------------------------------
 # The 'ls' family (this assumes you use a recent GNU ls).
@@ -399,19 +371,9 @@ function man()
 # Make the following commands run in background automatically:
 #-------------------------------------------------------------
 
-function te()  # wrapper around xemacs/gnuserv
-{
-    if [ "$(gnuclient -batch -eval t 2>&-)" == "t" ]; then
-       gnuclient -q "$@";
-    else
-       ( xemacs "$@" &);
-    fi
-}
-
 function soffice() { command soffice "$@" & }
 function firefox() { command firefox "$@" & }
 function xpdf() { command xpdf "$@" & }
-
 
 #-------------------------------------------------------------
 # File & strings related functions:
