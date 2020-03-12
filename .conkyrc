@@ -1,0 +1,1092 @@
+--[[# Author : Juddly # Name: Juddly's SweetKDERCLeft Conky
+]] conky.config= {
+    alignment='top_left',
+    background=true,
+    --[[#
+	color1='#ac42b3',
+    color2='#fec998',
+    color3='#4491e1',
+    color4='#00ffca',
+    color5='#161925',
+    default_color='#ffffff',
+    default_outline_color='#000000',
+    default_shade_color='#000000',
+    own_window_colour='#000000',
+    ]] color1='ac42b3',
+    color2='fec998',
+    color3='4491e1',
+    color4='00ffca',
+    color5='161925',
+    cpu_avg_samples=2,
+    default_color='ffffff',
+    default_outline_color='000000',
+    default_shade_color='000000',
+    double_buffer=true,
+    draw_borders=no,
+    draw_graph_borders=true,
+    draw_outline=no,
+    draw_shades=no,
+    font='Noto:normal:size=8',
+    gap_x=10,
+    imlib_cache_size=0,
+    no_buffers=true,
+    override_utf8_locale=yes,
+    own_window=true,
+    own_window_colour='000000',
+    short_units=yes,
+    show_graph_range=no,
+    show_graph_scale=no,
+    text_buffer_size=2048,
+    total_run_times=0,
+    update_interval=.5,
+    update_interval=1.0,
+    uppercase=no,
+    use_spacer=none,
+    use_xft=true,
+    xftalpha=0.8,
+    gap_y=50,
+    minimum_height=5,
+    minimum_width=255,
+    own_window_argb_value=127,
+    own_window_argb_visual=true,
+    own_window_class='Conky',
+    own_window_hints='undecorated,below,skip_taskbar,sticky,skip_pager',
+    own_window_transparent=true,
+    own_window_type='desktop',
+}
+
+conky.text=[[ #Title $ {
+    alignc
+}
+
+$ {
+    font Noto: bold:size=18
+}
+
+brendan's laptop $ {
+    color1
+}
+
+$ {
+    hr
+}
+
+$ {
+    color
+}
+
+# day/time $ {
+    goto 10
+}
+
+$ {
+    voffset 5
+}
+
+$ {
+    font Noto: normal:size=14
+}
+
+$ {
+    color
+}
+
+$ {
+    time %a
+}
+
+$ {
+    font Noto: normal:size=14
+}
+
+$ {
+    alignr 10
+}
+
+$ {
+    time %I: %M
+}
+
+$ {
+    color
+}
+
+$ {
+    font Noto: size=9
+}
+
+$ {
+    goto 10
+}
+
+Date:$ {
+    color2
+}
+
+$ {
+    alignr 10
+}
+
+$ {
+    time %d %B %Y
+}
+
+$ {
+    color
+}
+
+$ {
+    goto 10
+}
+
+Host:$ {
+    color2
+}
+
+$ {
+    alignr 10
+}
+
+$ {
+    exec hostname
+}
+
+$ {
+    goto 10
+}
+
+$ {
+    color
+}
+
+Kernel:$ {
+    alignr 10
+}
+
+$ {
+    color2
+}
+
+$ {
+    kernel
+}
+
+-$ {
+    machine
+}
+
+$ {
+    color
+}
+
+$ {
+    goto 10
+}
+
+Uptime:$ {
+    color2
+}
+
+$ {
+    alignr 10
+}
+
+$uptime #Processor section $ {
+    color
+}
+
+$ {
+    font Noto: bold:size=10
+}
+
+$ {
+    alignc
+}
+
+Processor$ {
+    font
+}
+
+$ {
+    color1
+}
+
+$ {
+    hr
+}
+
+$ {
+    color
+}
+
+$ {
+    alignc
+}
+
+$ {
+    color7
+}
+
+$ {
+    font Noto: normal:size=10
+}
+
+$ {
+    exec cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 18-41
+}
+
+# #CPUs $ {
+    color
+}
+
+$ {
+    font Noto: bold:size=10
+}
+
+$ {
+    alignc
+}
+
+CPUs$ {
+    font
+}
+
+$ {
+    font Noto: normal:size=8
+}
+
+$ {
+    color
+}
+
+$ {
+    goto 10
+}
+
+Core 1: $ {
+    color2
+}
+
+$ {
+    cpu cpu1
+}
+
+% $ {
+    alignr 10
+}
+
+$ {
+    color
+}
+
+Temp: $ {
+    color2
+}
+
+$ {
+    exec sensors|grep 'Core 0'|awk '{print $3}'
+}
+
+$ {
+    goto 15
+}
+
+$ {
+    color5
+}
+
+$ {
+    cpugraph cpu1 25,
+    220 fc8b3b c50ed2 -t
+}
+
+$ {
+    color
+}
+
+$ {
+    goto 10
+}
+
+Core 2: $ {
+    color2
+}
+
+$ {
+    cpu cpu2
+}
+
+% $ {
+    alignr 10
+}
+
+$ {
+    color
+}
+
+Temp: $ {
+    color2
+}
+
+$ {
+    exec sensors|grep 'Core 1'|awk '{print $3}'
+}
+
+$ {
+    goto 15
+}
+
+$ {
+    color5
+}
+
+$ {
+    cpugraph cpu2 25,
+    220 fc8b3b c50ed2 -t
+}
+
+$ {
+    color
+}
+
+$ {
+    goto 10
+}
+
+Core 3: $ {
+    color2
+}
+
+$ {
+    cpu cpu3
+}
+
+% $ {
+    alignr 10
+}
+
+$ {
+    color
+}
+
+Temp: $ {
+    color2
+}
+
+$ {
+    exec sensors|grep 'Core 2'|awk '{print $3}'
+}
+
+$ {
+    goto 15
+}
+
+$ {
+    color5
+}
+
+$ {
+    cpugraph cpu3 25,
+    220 fc8b3b c50ed2 -t
+}
+
+$ {
+    color
+}
+
+$ {
+    goto 10
+}
+
+Core 4: $ {
+    color2
+}
+
+$ {
+    cpu cpu4
+}
+
+% $ {
+    alignr 10
+}
+
+$ {
+    color
+}
+
+Temp: $ {
+    color2
+}
+
+$ {
+    exec sensors|grep 'Core 3'|awk '{print $3}'
+}
+
+$ {
+    goto 15
+}
+
+$ {
+    color5
+}
+
+$ {
+    cpugraph cpu4 25,
+    220 fc8b3b c50ed2 -t
+}
+
+# top processes $ {
+    voffset -5
+}
+
+$ {
+    font Noto: bold:size=10
+}
+
+$ {
+    color
+}
+
+$ {
+    alignc
+}
+
+Top Processes $ {
+    font
+}
+
+$ {
+    color
+}
+
+$ {
+    voffset 4
+}
+
+$ {
+    goto 10
+}
+
+$ {
+    top name 1
+}
+
+$ {
+    alignr 10
+}
+
+$ {
+    color1
+}
+
+$ {
+    top cpu 1
+}
+
+% $ {
+    color2
+}
+
+$ {
+    goto 10
+}
+
+$ {
+    voffset -2
+}
+
+$ {
+    top name 2
+}
+
+$ {
+    alignr 10
+}
+
+$ {
+    color
+}
+
+$ {
+    top cpu 2
+}
+
+% $ {
+    color2
+}
+
+$ {
+    goto 10
+}
+
+$ {
+    voffset -2
+}
+
+$ {
+    top name 3
+}
+
+$ {
+    alignr 10
+}
+
+$ {
+    color
+}
+
+$ {
+    top cpu 3
+}
+
+% $ {
+    color2
+}
+
+$ {
+    goto 10
+}
+
+$ {
+    voffset -2
+}
+
+$ {
+    top name 4
+}
+
+$ {
+    alignr 10
+}
+
+$ {
+    color
+}
+
+$ {
+    top cpu 4
+}
+
+% # # top memory $ {
+    voffset -5
+}
+
+$ {
+    font Noto: bold:size=10
+}
+
+$ {
+    color
+}
+
+$ {
+    alignc
+}
+
+Memory$ {
+    font
+}
+
+$ {
+    color1
+}
+
+$ {
+    hr
+}
+
+$ {
+    color
+}
+
+$ {
+    goto 20
+}
+
+$ {
+    color5
+}
+
+$ {
+    memgraph 25,
+    220 fc8b3b c50ed2 -t
+}
+
+$ {
+    goto 10
+}
+
+$ {
+    color
+}
+
+Current RAM Usage: $ {
+    alignr 10
+}
+
+$ {
+    color1
+}
+
+$ {
+    memperc
+}
+
+% $ {
+    goto 10
+}
+
+$ {
+    color2
+}
+
+$ {
+    voffset -2
+}
+
+$ {
+    top_mem name 1
+}
+
+$ {
+    alignr 10
+}
+
+$ {
+    color
+}
+
+$ {
+    top mem 1
+}
+
+% $ {
+    color2
+}
+
+$ {
+    goto 10
+}
+
+$ {
+    voffset -2
+}
+
+$ {
+    top_mem name 2
+}
+
+$ {
+    alignr 10
+}
+
+$ {
+    color
+}
+
+$ {
+    top mem 2
+}
+
+% $ {
+    color2
+}
+
+$ {
+    goto 10
+}
+
+$ {
+    voffset -2
+}
+
+$ {
+    top_mem name 3
+}
+
+$ {
+    alignr 10
+}
+
+$ {
+    color
+}
+
+$ {
+    top mem 3
+}
+
+% # #network $ {
+    voffset -5
+}
+
+$ {
+    font Noto: bold:size=10
+}
+
+$ {
+    color
+}
+
+$ {
+    alignc
+}
+
+Network $ {
+    color1
+}
+
+$ {
+    hr
+}
+
+$ {
+    color
+}
+
+$ {
+    font
+}
+
+$ {
+    goto 10
+}
+
+Network SSID: $ {
+    alignr 10
+}
+
+$ {
+    wireless_essid wlp1s0
+}
+
+$ {
+    goto 10
+}
+
+Signal: $ {
+    color2
+}
+
+$ {
+    wireless_link_bar 10,
+    160 wlp1s0
+}
+
+$ {
+    color
+}
+
+$ {
+    alignr 10
+}
+
+$ {
+    wireless_link_qual_perc wlp1s0
+}
+
+% #$ {
+    font
+}
+
+$ {
+    goto 10
+}
+
+Internal: $ {
+    alignr 10
+}
+
+$ {
+    addr wlp1s0
+}
+
+#$ {
+    font
+}
+
+$ {
+    goto 10
+}
+
+External: $ {
+    font Noto: bold:9
+}
+
+$ {
+    alignr 10
+}
+
+$ {
+    exec curl ipinfo.io/ip
+}
+
+$ {
+    font
+}
+
+$ {
+    voffset 5
+}
+
+$ {
+    goto 15
+}
+
+$ {
+    color
+}
+
+Up: $ {
+    color6
+}
+
+$ {
+    upspeed wlp1s0
+}
+
+$ {
+    goto 140
+}
+
+$ {
+    color
+}
+
+Down: $ {
+    color6
+}
+
+$ {
+    downspeed wlp1s0
+}
+
+$ {
+    color
+}
+
+$ {
+    goto 15
+}
+
+$ {
+    voffset 0
+}
+
+Total up: $ {
+    color6
+}
+
+$ {
+    totalup wlp1s0
+}
+
+$ {
+    goto 140
+}
+
+$ {
+    color
+}
+
+Total down: $ {
+    color6
+}
+
+$ {
+    totaldown wlp1s0
+}
+
+$ {
+    goto 15
+}
+
+$ {
+    color5
+}
+
+$ {
+    upspeedgraph wlp1s0 25,
+    110 fc8b3b c50ed2 -t
+}
+
+$ {
+    color5
+}
+
+$ {
+    downspeedgraph wlp1s0 25,
+    110 fc8b3b c50ed2 -t
+}
+
+#Storage $ {
+    font Noto: bold:size=10
+}
+
+$ {
+    alignc
+}
+
+$ {
+    color
+}
+
+Storage$ {
+    font
+}
+
+$ {
+    color1
+}
+
+$ {
+    hr 1
+}
+
+$ {
+    color
+}
+
+#$ {
+    goto 10
+}
+
+$ {
+    color
+}
+
+Disk I/O Scheduler: $ {
+    color2
+}
+
+$ {
+    alignr 10
+}
+
+$ {
+    ioscheduler /dev/sda
+}
+
+$ {
+    goto 10
+}
+
+$ {
+    color
+}
+
+SSD: $ {
+    alignr 10
+}
+
+$ {
+    color
+}
+
+$ {
+    fs_used /
+}
+
+$ {
+    color
+}
+
+/ $ {
+    color2
+}
+
+$ {
+    alignr 10
+}
+
+$ {
+    fs_size /
+}
+
+$ {
+    goto 10
+}
+
+$ {
+    color
+}
+
+Read: $ {
+    color2
+}
+
+$ {
+    diskio_read sda2
+}
+
+$ {
+    goto 10
+}
+
+$ {
+    alignc
+}
+
+$ {
+    color5
+}
+
+$ {
+    diskiograph_read sda2 25,
+    220 fc8b3b c50ed2 -t
+}
+
+$ {
+    color
+}
+
+$ {
+    goto 10
+}
+
+Write: $ {
+    color2
+}
+
+$ {
+    diskio_write sda2
+}
+
+$ {
+    goto 10
+}
+
+$ {
+    alignc
+}
+
+$ {
+    color5
+}
+
+$ {
+    diskiograph_write sda2 25,
+    220 fc8b3b c50ed2 -t
+}
+
+$ {
+    goto 10
+}
+
+$ {
+    color2
+}
+
+Available: $ {
+    alignr 10
+}
+
+$ {
+    color6
+}
+
+$ {
+    fs_free_perc /
+}
+
+%]]
