@@ -1,3 +1,4 @@
+export TERM="xterm"
 # Aliases
 alias ls='ls -h --color=auto'
 alias ll='ls -alhX'
@@ -280,10 +281,14 @@ alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 alias du='du -kh'    # Makes a more readable output.
 alias df='df -kTh'
 alias sampler='sampler-1.0.3-windows-amd64.exe'
+alias ag='ag --path-to-ignore ~/.ignore' 
+alias push='pushd'
+alias pop='popd'
+
 #-----------------
 # Code checking
 # ----------------
-alias check_pylint = rm -f PYLINT.py && pylint <filename> > PYLINT.py && vim PYLINT.py
+# alias check_pylint = rm -f PYLINT.py && pylint <filename> > PYLINT.py && vim PYLINT.py
 
 #-------------------------------------------------------------
 # The 'ls' family (this assumes you use a recent GNU ls).

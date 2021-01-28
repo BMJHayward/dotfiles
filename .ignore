@@ -1,0 +1,9 @@
+# ag ignore file for the silver search. 
+# ag also uses .gitignore and .hgignore by default
+venv
+logs 
+*.blame
+*.log
+*.gitblame
+*.gitlog
+package.json

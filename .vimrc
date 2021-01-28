@@ -110,3 +110,9 @@ set wildmode=list:longest
 " set wildmode=longest:full
 let g:netrw_liststyle=3
 set autochdir
+
+" Git commands
+map <F5> :!git add %;git commit -m "commit" %<CR>
+map <F4> :!git log --abbrev-commit % > %.gitlog<CR>:vsplit %.gitlog<CR>
+map <F3> :!git blame % > %.gitblame<CR>:vsplit %.gitblame<CR>
+
