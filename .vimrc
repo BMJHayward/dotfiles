@@ -39,6 +39,7 @@ set modelines=0
 
 " Show file stats
 set ruler
+set colorcolumn=80,100,120
 
 " Encoding
 set encoding=utf-8
@@ -115,4 +116,5 @@ set autochdir
 map <F5> :!git add %;git commit -m "commit" %<CR>
 map <F4> :!git log --abbrev-commit % > %.gitlog<CR>:vsplit %.gitlog<CR>
 map <F3> :!git blame % > %.gitblame<CR>:vsplit %.gitblame<CR>
+nmap <silent><Leader>g :call setbufvar(winbufnr(popup_atcursor(systemlist("cd " . shellescape(fnamemodify(resolve(expand('%:p')), ":h")) . " && git log --no-merges -n 1 -L " . shellescape(line("v") . "," . line(".") . ":" . resolve(expand("%:p")))), { "padding": [1,1,1,1], "pos": "botleft", "wrap": 0 })), "&filetype", "git")<CR>
 
